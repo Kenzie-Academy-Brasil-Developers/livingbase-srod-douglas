@@ -1,3 +1,4 @@
+import { renderCardPost, renderSelectedCategory } from '../render.js'
 import url from '../path.js'
 
 async function getCategories () {
@@ -14,6 +15,38 @@ async function getCategories () {
     }
 }
 
-const categories = await getCategories()
+async function getSelectedCategory (category){
 
-export default categories
+    if(category !== undefined){
+        
+    let endPoint = category.toLowerCase().replaceAll("ç", "c").replaceAll("ã", "a")
+
+    const request = await fetch(`${url}?category=${endPoint}`,{
+        method: "GET",
+    })
+
+    try{
+        const data = await request.json()
+
+        if(request.ok){
+
+            data.news.forEach((post)=>{
+                let end = post.category.toLowerCase().replaceAll("ç", "c").replaceAll("ã", "a")
+                if(endPoint == end){
+                    
+                    renderSelectedCategory([post])
+                }
+            })
+        }
+    }catch(err){
+        console.error(err)
+    }
+    }else{
+        await renderCardPost()
+    }
+}
+    
+const categories = await getCategories()
+const selectedCategory = await getSelectedCategory()
+
+export { categories, selectedCategory, getSelectedCategory }
