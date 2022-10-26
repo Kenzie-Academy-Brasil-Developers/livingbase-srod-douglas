@@ -1,10 +1,10 @@
 import url from '../path.js'
 
 async function getCategories () {
-    const response = await fetch(url)
+    const request = await fetch(url)
     
     try{
-        const page = await response.json()
+        const page = await request.json()
  
         const news = page.news
         const category = news.map((info)=> info.category)

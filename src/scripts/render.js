@@ -1,18 +1,43 @@
 import url from './path.js'
-console.log(url)
+import categories from './requests/categories.js'
+import getPosts from './requests/posts.js'
+
+
 
 async function renderCardPost (){
-    const response = await fetch(url)
+    const posts = await getPosts()
+    const ul = document.querySelector("#posts")
 
+    posts.forEach((post)=>{
+
+    ul.insertAdjacentHTML("afterbegin",
+    `
+    <li class="card">
+        <img src="${post.image}" alt="${post.title}">
+        <div class="infos">
+            <h2 class="title">${post.title}</h2>
+            <p class="desc">${post.description}</p>
+        </div>
+        <span class="link" id="${post.id}"></span>
+    </li>
+    `)
+    })
 }
+
+
 
 function renderCategories (){
     const ul = document.querySelector("#categories")
 
-    ul.insertAdjacentHTML("afterbegin",
-    `
-    
-    `)
+    categories.forEach((category)=>{
+
+        ul.insertAdjacentHTML("afterbegin",
+        `
+        <li class="category">
+            <p>${category}</p>
+        </li>
+        `)
+    })
 }
 
-export { renderCardPost }
+export { renderCardPost, renderCategories }
