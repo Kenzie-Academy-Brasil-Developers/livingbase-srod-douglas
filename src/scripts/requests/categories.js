@@ -2,14 +2,18 @@ import { renderCardPost, renderSelectedCategory } from '../render.js'
 import url from '../path.js'
 
 async function getCategories () {
-    const request = await fetch(url)
-    
+    const request = await fetch(`${url}?page=0`)
+
     try{
         const page = await request.json()
- 
+
         const news = page.news
-        const category = news.map((info)=> info.category)
+        let category = news.map((info)=> info.category)
+        const categoriesNotRepeat = new Set(category)
+        category = Array.from(categoriesNotRepeat)
+
         return category
+        
     }catch(err){
 
     }
