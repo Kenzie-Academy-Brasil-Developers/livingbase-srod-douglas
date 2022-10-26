@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Living</title>
+    <link rel="stylesheet" href="./src/styles/globalStyles.css">
+    <title>Living - Home</title>
 </head>
+
 <body>
-    <main></main>
+    <header>
+        <div class="container left">
+            <div>
+                <img src="./src/assets/img/brand-icon.svg" alt="Icone Living">
+                <p>Living</p>
+            </div>
+            <h1>Cuidando de cada <span>detalhe</span> da sua casa</h1>
+            <p>Trazendo uma nova e incrível experiência para você e para seu lar </p>
+            <span>Consumir conteúdos</span>
+        </div>
+        <div class="container right">
+            <img src="./src/assets/img/home.svg" alt="Imagem de uma pessoa navegando em nosso site">
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <ul id="categories"></ul>
+        </section>
+        <section>
+            <ul id="posts"></ul>
+        </section>
+    </main>
+    <script type="module" src="./src/pages/home/index.js"></script>
 </body>
+
 </html>
