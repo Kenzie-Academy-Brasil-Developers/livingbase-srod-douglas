@@ -15,7 +15,7 @@ async function renderCardPost (){
             <h2 class="title">${post.title}</h2>
             <p class="desc">${post.description}</p>
         </div>
-        <span class="link" id="${post.id}"></span>
+        <span class="${post.category} link" id="${post.id}">Acessar conteúdo</span>
     </li>
     `)
     })
