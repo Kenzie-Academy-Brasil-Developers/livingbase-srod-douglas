@@ -1,4 +1,6 @@
 import url from "../path.js";
+import { storage } from '../localStorage.js'
+
 
 async function getPosts (){
     const request = await fetch(url)
@@ -15,4 +17,23 @@ async function getPosts (){
     }
 }
 
-export default getPosts
+
+async function dataPagePost () {
+
+    const local = storage
+    const idPost = local.id
+
+    const request = await fetch(`${url}/${idPost}`)
+
+    try{
+        const response = await request.json()
+        if(response.ok){
+            return response
+        }
+    }catch(err){
+        console.error(err)
+    }
+}
+
+
+export { getPosts, dataPagePost }

@@ -1,5 +1,4 @@
 import { renderCardPost, renderCategories, renderSelectedCategory } from '../../scripts/render.js'
-import getPosts from '../../scripts/requests/posts.js'
 import { categories, getSelectedCategory, getCategories } from '../../scripts/requests/categories.js'
 import { storage } from '../../scripts/localStorage.js'
 import { insertInLocalStorage } from '../../scripts/localStorage.js'
@@ -32,5 +31,8 @@ redirects.forEach((choice)=>{
             category: `${category}`,
         }
         insertInLocalStorage(JSON.stringify(pref))
+        setTimeout(()=>{
+            window.location.pathname = '/src/pages/post/index.html'
+        },1000)
     }
 })

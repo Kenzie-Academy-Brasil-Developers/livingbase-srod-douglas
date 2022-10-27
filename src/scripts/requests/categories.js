@@ -63,4 +63,4 @@ async function getSelectedCategory (category){
 const categories = allCategories
 const selectedCategory = await getSelectedCategory()
 
-export { categories, selectedCategory, getSelectedCategory, getCategories }
+export { categories, selectedCategory, getSelectedCategory, getCategories, renderCategories, allCategories }

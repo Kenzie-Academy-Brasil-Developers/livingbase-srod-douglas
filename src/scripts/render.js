@@ -1,8 +1,7 @@
+import { getPosts, dataPagePost } from './requests/posts.js'
 import { setAtLocal } from './localStorage.js'
-import getPosts from './requests/posts.js'
 
 async function renderCardPost (){
-
 
     const posts = await getPosts()
     const ul = document.querySelector("#posts")
@@ -18,7 +17,7 @@ async function renderCardPost (){
             <h2 class="title">${post.title}</h2>
             <p class="desc">${post.description}</p>
         </div>
-        <span class="${post.category} link" id="${post.id}">Acessar conteúdo</span>
+        <span class="${post.category} link" id="${post.id}" data-post="src/pages/post/index.html">Acessar conteúdo</span>
     </li>
     `)
     })
@@ -57,7 +56,7 @@ function renderSelectedCategory (post){
             <h2 class="title">${infos.title}</h2>
             <p class="desc">${infos.description}</p>
         </div>
-        <span class="${infos.category} link" id="${infos.id}">Acessar Conteúdo</span>
+        <span class="${infos.category} link" id="${infos.id}" data-post="src/pages/post/index.html">Acessar Conteúdo</span>
         </li>
         `)
     })
@@ -65,4 +64,32 @@ function renderSelectedCategory (post){
     setAtLocal(redirects)
 }
 
-export { renderCardPost, renderCategories, renderSelectedCategory }
+async function renderJustPost (){
+    const post = await dataPagePost()
+    const main = document.querySelector("main")
+
+    main.insertAdjacentHTML("afterbegin",
+    `
+    <section>
+        <h1>${post.title}</h1>
+        <p>${post.description}</p>
+    </section>
+    <section>
+        <div>
+            <img src="${post.image}" alt="${post.title}">
+        </div>
+        <p>${post.content}</p>
+    </section>
+    `)
+}
+
+async function renderJustListCategories () {
+    const ul = document.querySelector("ul")
+
+    ul.insertAdjacentHTML("afterbegin",
+    `
+    <h1>teste</h1>
+    `)
+}
+
+export { renderCardPost, renderCategories, renderSelectedCategory, renderJustPost }
