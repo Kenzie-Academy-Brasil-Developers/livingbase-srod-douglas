@@ -1,4 +1,3 @@
-import {categories} from './requests/categories.js'
 import getPosts from './requests/posts.js'
 
 async function renderCardPost (){
@@ -21,9 +20,10 @@ async function renderCardPost (){
     })
 }
 
-function renderCategories (){
+function renderCategories (categories){
+    
     const ul = document.querySelector("#categories")
-
+    console.log(categories)
     categories.forEach((category)=>{
 
         ul.insertAdjacentHTML("beforeend",
