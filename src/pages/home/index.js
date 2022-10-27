@@ -1,48 +1,48 @@
 import { renderCardPost, renderCategories, renderSelectedCategory } from '../../scripts/render.js'
-import { categories, getSelectedCategory, getCategories } from '../../scripts/requests/categories.js'
-import { storage } from '../../scripts/localStorage.js'
-import { insertInLocalStorage } from '../../scripts/localStorage.js'
+import { insertInLocalStorage, newsLocalStorage, setAllNews } from '../../scripts/localStorage.js'
+import getAllCategories from '../../scripts/requests/allCategories.js'
+import getAllNews from '../../scripts/requests/allNews.js'
 
-const redirects = document.querySelectorAll(".link")
-const btsCategory = document.querySelectorAll("#category")
+setAllNews(await getAllNews())
+renderCategories(await getAllCategories())
+renderCardPost(await getAllNews())
 
-btsCategory.forEach((category)=>{
-    console.log(category)
-    category.onclick = async () =>{
-        let ul = document.querySelector("#posts")
-        ul.innerHTML = ""
-        let selected = await category.innerText
-        if(selected == "Todos"){
-            renderCardPost()
-        }else{
-            await getSelectedCategory(selected)
+
+setTimeout(() => {
+    const redirects = document.querySelectorAll(".link")
+    const btsCategory = document.querySelectorAll("#category")
+
+    redirects.forEach((choice)=>{
+    
+        choice.onclick = (event) =>{
+            let category = event.target.classList[0].toLowerCase().replaceAll("ç", "c").replaceAll("ã", "a")
+            let pref = {
+                id: event.target.id,
+                category: `${category}`,
+            }
+            insertInLocalStorage(JSON.stringify(pref))
+            window.location.replace(event.target.dataset.post)
         }
-    }
-})
+    })
 
-
-
-redirects.forEach((choice)=>{
-
-    choice.onclick = (event) =>{
-        let category = event.target.classList[0].toLowerCase().replaceAll("ç", "c").replaceAll("ã", "a")
-        let pref = {
-            id: event.target.id,
-            category: `${category}`,
-        }
-        insertInLocalStorage(JSON.stringify(pref))
-        window.location.replace(event.target.dataset.post)
-/*         setTimeout(()=>{
-            window.location.pathname = '/src/pages/post/index.html'
-        },1000) */
-
-        /* 
-        CAPTURAR O SPAN COM CLASSE .LINK (REDIRECT)         OK
-        PERCORRER O ARRAY                                   OK
-        REFATORAR O ENDPOINT PARA ARMAZENAR NO LOCALSTORAGE OK
-        ARMAZENAR                                           OK
-        REDIRECIONAR A PARTIR DO PATH-POST 
-        ALTERAR O SETTIMEOUT PELO DATA DO SPAN (PATH-POST))
-        */
-    }
-})
+    btsCategory.forEach((category)=>{
+            
+        category.addEventListener("click", event =>{
+    
+            let filterCategories = []
+            const list = newsLocalStorage()
+            if(event.target.innerText == "Todos"){
+                renderCardPost()
+            }else{
+    
+                list.forEach((obj)=>{
+                    if(obj.category == event.target.innerText){
+    
+                        filterCategories.push(obj)
+                    }
+                })
+            }
+                renderSelectedCategory(filterCategories)
+        })
+    })
+}, 1000);
