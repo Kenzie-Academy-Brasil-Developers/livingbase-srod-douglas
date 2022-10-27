@@ -65,6 +65,7 @@ function renderSelectedCategory (post){
 }
 
 async function renderJustPost (){
+
     const post = await dataPagePost()
     const main = document.querySelector("main")
 

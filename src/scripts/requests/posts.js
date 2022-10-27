@@ -22,12 +22,12 @@ async function dataPagePost () {
 
     const local = storage
     const idPost = local.id
-
     const request = await fetch(`${url}/${idPost}`)
 
     try{
         const response = await request.json()
-        if(response.ok){
+
+        if(request.ok){
             return response
         }
     }catch(err){
