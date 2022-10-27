@@ -31,8 +31,18 @@ redirects.forEach((choice)=>{
             category: `${category}`,
         }
         insertInLocalStorage(JSON.stringify(pref))
-        setTimeout(()=>{
+        window.location.replace(event.target.dataset.post)
+/*         setTimeout(()=>{
             window.location.pathname = '/src/pages/post/index.html'
-        },1000)
+        },1000) */
+
+        /* 
+        CAPTURAR O SPAN COM CLASSE .LINK (REDIRECT)         OK
+        PERCORRER O ARRAY                                   OK
+        REFATORAR O ENDPOINT PARA ARMAZENAR NO LOCALSTORAGE OK
+        ARMAZENAR                                           OK
+        REDIRECIONAR A PARTIR DO PATH-POST 
+        ALTERAR O SETTIMEOUT PELO DATA DO SPAN (PATH-POST))
+        */
     }
 })
