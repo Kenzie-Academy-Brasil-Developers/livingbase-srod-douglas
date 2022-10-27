@@ -1,8 +1,12 @@
+import { setAtLocal } from './localStorage.js'
 import getPosts from './requests/posts.js'
 
 async function renderCardPost (){
+
+
     const posts = await getPosts()
     const ul = document.querySelector("#posts")
+
     ul.innerHTML = ""
     posts.forEach((post)=>{
 
@@ -18,6 +22,7 @@ async function renderCardPost (){
     </li>
     `)
     })
+
 }
 
 function renderCategories (categories){
@@ -39,12 +44,11 @@ function renderCategories (categories){
 }
 
 function renderSelectedCategory (post){
-
     const ul = document.querySelector("#posts")
     ul.innerHTML = ""
     
     post.forEach((infos)=>{
-
+        
         ul.insertAdjacentHTML("afterbegin",
         `
         <li class="card">
@@ -53,10 +57,12 @@ function renderSelectedCategory (post){
             <h2 class="title">${infos.title}</h2>
             <p class="desc">${infos.description}</p>
         </div>
-        <span class="link" id="${infos.id}"></span>
-    </li>
+        <span class="${infos.category} link" id="${infos.id}">Acessar Conteúdo</span>
+        </li>
         `)
     })
+    const redirects = document.querySelectorAll(".link")
+    setAtLocal(redirects)
 }
 
 export { renderCardPost, renderCategories, renderSelectedCategory }
