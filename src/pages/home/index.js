@@ -1,14 +1,14 @@
 import { renderCardPost, renderCategories, renderSelectedCategory } from '../../scripts/render.js'
 import getPosts from '../../scripts/requests/posts.js'
-import { categories, getSelectedCategory } from '../../scripts/requests/categories.js'
+import { categories, getSelectedCategory, getCategories } from '../../scripts/requests/categories.js'
 import { storage } from '../../scripts/localStorage.js'
 import { insertInLocalStorage } from '../../scripts/localStorage.js'
 
-const node = renderCategories()
 const redirects = document.querySelectorAll(".link")
+const btsCategory = document.querySelectorAll("#category")
 
-node.forEach((category)=>{
-
+btsCategory.forEach((category)=>{
+    console.log(category)
     category.onclick = async () =>{
         let ul = document.querySelector("#posts")
         ul.innerHTML = ""
@@ -30,6 +30,5 @@ redirects.forEach((choice)=>{
             category: `${category}`,
         }
         insertInLocalStorage(JSON.stringify(pref))
-
     }
 })

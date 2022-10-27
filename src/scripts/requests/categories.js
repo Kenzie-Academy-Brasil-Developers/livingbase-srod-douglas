@@ -1,19 +1,33 @@
-import { renderCardPost, renderSelectedCategory } from '../render.js'
+import { renderCardPost, renderCategories, renderSelectedCategory } from '../render.js'
 import url from '../path.js'
 
-async function getCategories () {
-    const request = await fetch(url)
+async function getCategories (count) {
+    const request = await fetch(`${url}?page=${count}`)
     
     try{
         const page = await request.json()
- 
+        
         const news = page.news
-        const category = news.map((info)=> info.category)
+        let category = news.map((info)=> info.category)
+        const categoriesNotRepeat = new Set(category)
+        category = Array.from(categoriesNotRepeat)
+        
         return category
+        
     }catch(err){
-
+        
     }
 }
+
+let pageZero = await getCategories(0)
+
+let pageOne = await getCategories(1)
+
+let allCategories = [...pageZero, ...pageOne]
+
+let categoriesNotRepeat = new Set (allCategories)
+allCategories = Array.from(categoriesNotRepeat)
+renderCategories(allCategories)
 
 async function getSelectedCategory (category){
 
@@ -46,7 +60,7 @@ async function getSelectedCategory (category){
     }
 }
     
-const categories = await getCategories()
+const categories = allCategories
 const selectedCategory = await getSelectedCategory()
 
-export { categories, selectedCategory, getSelectedCategory }
+export { categories, selectedCategory, getSelectedCategory, getCategories }
