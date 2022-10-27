@@ -21,6 +21,7 @@ async function renderCardPost (){
     </li>
     `)
     })
+
 }
 
 function renderCategories (categories){
@@ -63,7 +64,6 @@ function renderSelectedCategory (post){
     setAtLocal(redirects)
 }
 
-
 async function renderJustPost (){
     const post = await dataPagePost()
     const main = document.querySelector("main")
@@ -91,6 +91,5 @@ async function renderJustListCategories () {
     <h1>teste</h1>
     `)
 }
-
 
 export { renderCardPost, renderCategories, renderSelectedCategory, renderJustPost }

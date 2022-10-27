@@ -20,6 +20,8 @@ btsCategory.forEach((category)=>{
     }
 })
 
+
+
 redirects.forEach((choice)=>{
 
     choice.onclick = (event) =>{

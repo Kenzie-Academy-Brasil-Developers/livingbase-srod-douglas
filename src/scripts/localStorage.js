@@ -24,4 +24,5 @@ function setAtLocal (post) {
 }
 
 const storage = checkLocal()
+
 export { storage, insertInLocalStorage, setAtLocal }
