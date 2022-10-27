@@ -23,6 +23,15 @@ function setAtLocal (post) {
     })
 }
 
+async function setAllNews (allNews){
+    localStorage.setItem("@all-news", JSON.stringify(await allNews))
+}
+
+function newsLocalStorage () {
+    const newsLocalStorage = JSON.parse(localStorage.getItem("@all-news"))
+    return newsLocalStorage
+}
+
 const storage = checkLocal()
 
-export { storage, insertInLocalStorage, setAtLocal }
+export { storage, insertInLocalStorage, setAtLocal, setAllNews, newsLocalStorage }

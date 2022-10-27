@@ -1,5 +1,7 @@
 import { getPosts, dataPagePost } from './requests/posts.js'
-import { setAtLocal } from './localStorage.js'
+import { setAtLocal, insertInLocalStorage } from './localStorage.js'
+import { newsLocalStorage } from './localStorage.js'
+/* import { getSelectedCategory } from './requests/categories.js' */
 
 async function renderCardPost (){
 
@@ -22,12 +24,27 @@ async function renderCardPost (){
     `)
     })
 
+    
+    const redirects = document.querySelectorAll(".link")
+    redirects.forEach((choice)=>{
+    
+        choice.onclick = (event) =>{
+            let category = event.target.classList[0].toLowerCase().replaceAll("ç", "c").replaceAll("ã", "a")
+            let pref = {
+                id: event.target.id,
+                category: `${category}`,
+            }
+            insertInLocalStorage(JSON.stringify(pref))
+            window.location.replace(event.target.dataset.post)
+        }
+    })
+
 }
 
 function renderCategories (categories){
-    
+
     const ul = document.querySelector("#categories")
-    console.log(categories)
+
     categories.forEach((category)=>{
 
         ul.insertAdjacentHTML("beforeend",
@@ -39,29 +56,70 @@ function renderCategories (categories){
     })
     const categoriesNode = document.querySelectorAll("#category")
 
+
+    /* categoriesNode *//* .forEach((category)=>{
+        
+        category.addEventListener("click", event =>{
+
+            const list = newsLocalStorage()
+            if(event.target.innerText == "Todos"){
+                renderCardPost()
+            }else{
+
+                let filterCategories = []
+                list.forEach((obj)=>{
+                    if(obj.category == event.target.innerText){
+    
+                        filterCategories.push(obj)
+                    }
+                })
+            }
+
+                renderSelectedCategory(filterCategories)
+
+        })
+    }) */
     return categoriesNode
 }
 
-function renderSelectedCategory (post){
+
+
+
+
+function renderSelectedCategory (posts){
+    console.log(posts)
     const ul = document.querySelector("#posts")
     ul.innerHTML = ""
     
-    post.forEach((infos)=>{
-        
+    posts.forEach((info)=>{
+        console.log(info.title)
         ul.insertAdjacentHTML("afterbegin",
         `
         <li class="card">
-        <img src="${infos.image}" alt="${infos.title}">
-        <div class="infos">
-            <h2 class="title">${infos.title}</h2>
-            <p class="desc">${infos.description}</p>
+        <img src="${info.image}" alt="${info.title}">
+        <div class="info">
+            <h2 class="title">${info.title}</h2>
+            <p class="desc">${info.description}</p>
         </div>
-        <span class="${infos.category} link" id="${infos.id}" data-post="src/pages/post/index.html">Acessar Conteúdo</span>
+        <span class="${info.category} link" id="${info.id}" data-post="src/pages/post/index.html">Acessar Conteúdo</span>
         </li>
         `)
     })
     const redirects = document.querySelectorAll(".link")
     setAtLocal(redirects)
+
+    redirects.forEach((choice)=>{
+
+        choice.onclick = (event) =>{
+            let category = event.target.classList[0].toLowerCase().replaceAll("ç", "c").replaceAll("ã", "a")
+            let pref = {
+                id: event.target.id,
+                category: `${category}`,
+            }
+            insertInLocalStorage(JSON.stringify(pref))
+            window.location.replace(event.target.dataset.post)
+        }
+    })
 }
 
 async function renderJustPost (){

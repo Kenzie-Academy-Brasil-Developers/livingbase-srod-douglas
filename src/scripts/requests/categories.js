@@ -1,5 +1,6 @@
 import { renderCardPost, renderCategories, renderSelectedCategory } from '../render.js'
 import url from '../path.js'
+import { getPosts } from './posts.js'
 
 async function getCategories (count) {
     const request = await fetch(`${url}?page=${count}`)
@@ -15,21 +16,22 @@ async function getCategories (count) {
         return category
         
     }catch(err){
-        
+        console.error(err)
     }
 }
 
-let pageZero = await getCategories(0)
 
-let pageOne = await getCategories(1)
 
-let allCategories = [...pageZero, ...pageOne]
 
-let categoriesNotRepeat = new Set (allCategories)
-allCategories = Array.from(categoriesNotRepeat)
-renderCategories(allCategories)
 
-async function getSelectedCategory (category){
+/* renderCategories(allCategories) */
+
+
+
+
+
+
+/* async function getSelectedCategory (category){
 
     if(category !== undefined){
         
@@ -58,9 +60,9 @@ async function getSelectedCategory (category){
     }else{
         await renderCardPost()
     }
-}
+} */
     
-const categories = allCategories
-const selectedCategory = await getSelectedCategory()
 
-export { categories, selectedCategory, getSelectedCategory, getCategories, renderCategories, allCategories }
+/* const selectedCategory = await getSelectedCategory() */
+
+export { /* selectedCategory */ /* getSelectedCategory */ renderCategories, getCategories }
