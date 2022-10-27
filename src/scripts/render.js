@@ -1,7 +1,5 @@
 import { getPosts, dataPagePost } from './requests/posts.js'
 import { setAtLocal, insertInLocalStorage } from './localStorage.js'
-import { newsLocalStorage } from './localStorage.js'
-/* import { getSelectedCategory } from './requests/categories.js' */
 
 async function renderCardPost (){
 
@@ -24,7 +22,6 @@ async function renderCardPost (){
     `)
     })
 
-    
     const redirects = document.querySelectorAll(".link")
     redirects.forEach((choice)=>{
     
@@ -38,7 +35,6 @@ async function renderCardPost (){
             window.location.replace(event.target.dataset.post)
         }
     })
-
 }
 
 function renderCategories (categories){
@@ -56,34 +52,8 @@ function renderCategories (categories){
     })
     const categoriesNode = document.querySelectorAll("#category")
 
-
-    /* categoriesNode *//* .forEach((category)=>{
-        
-        category.addEventListener("click", event =>{
-
-            const list = newsLocalStorage()
-            if(event.target.innerText == "Todos"){
-                renderCardPost()
-            }else{
-
-                let filterCategories = []
-                list.forEach((obj)=>{
-                    if(obj.category == event.target.innerText){
-    
-                        filterCategories.push(obj)
-                    }
-                })
-            }
-
-                renderSelectedCategory(filterCategories)
-
-        })
-    }) */
     return categoriesNode
 }
-
-
-
 
 
 function renderSelectedCategory (posts){
