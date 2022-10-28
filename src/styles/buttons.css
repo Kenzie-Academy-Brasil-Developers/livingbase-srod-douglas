@@ -1,0 +1,60 @@
+.bt-grey{
+    width: 78px;
+    height: 2.375rem;
+    padding: 0 22px;
+    gap: 10px;
+    border: 1px solid var(--color-grey-600);
+    border-radius: 2rem;
+    color: var(--color-grey-200);
+    background-color: var(--color-grey-600);
+}
+
+.bt-grey:hover{
+    background-color: var(--color-grey-500);
+}
+
+.bt-greyDark{
+    width: 78px;
+    height: 2.375rem;
+    padding: 0 22px;
+    gap: 10px;
+    border: 1px solid var(--color-grey-200);
+    border-radius: 2rem;
+    color: var(--color-grey-600);
+    background-color: var(--color-grey-200);
+    animation: dissolve ease-out 300ms;
+}
+
+.bt-greyDark:hover{
+    background-color: var(--color-grey-300);
+
+}
+
+.bt-primary{
+    width: 78px;
+    height: 2.375rem;
+    padding: 0 22px;
+    gap: 10px;
+    border: 1px solid var(--color-brand-100);
+    border-radius: 2rem;
+    color: var(--color-grey-800);
+    background-color: var(--color-brand-100);
+    animation: dissolve ease-out 300ms;
+}
+
+.bt-primary:hover{
+    background-color: var(--color-brand-200);
+}
+
+.preview{
+    width: 0.5rem;
+    height: 1.5rem;
+    padding: 0 1.375rem;
+    gap: 10px;
+    animation: dissolve ease-out 300ms;
+}
+
+.preview:hover{
+    background-color: var(--color-grey-400);
+    border-radius: 150px;
+}
