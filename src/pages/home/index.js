@@ -2,8 +2,10 @@ import { renderCardPost, renderCategories, renderSelectedCategory } from '../../
 import { insertInLocalStorage, newsLocalStorage, setAllNews, checkPreferencesFromPost, storage } from '../../scripts/localStorage.js'
 import getAllCategories from '../../scripts/requests/allCategories.js'
 import getAllNews from '../../scripts/requests/allNews.js'
+import { checkScroll } from '../../scripts/infiniteScroll.js'
 
 const verifyLocalFromPost = checkPreferencesFromPost()
+
 
 if(verifyLocalFromPost.length > 0){
 
@@ -31,7 +33,8 @@ if(verifyLocalFromPost.length > 0){
         btsCategory.forEach((category)=>{
                 
             category.addEventListener("click", event =>{
-        
+                
+                checkScroll("selected")
                 let filterCategories = []
                 const list = newsLocalStorage()
 
@@ -53,12 +56,15 @@ if(verifyLocalFromPost.length > 0){
             })
         })
     }, 1000);
+
 }else{
+
     if(storage !== ""){
 
         renderSelectedCategory(storage)
         renderCategories(await getAllCategories())
-    
+        localStorage.removeItem("@preference at home")
+
         setTimeout(() => {
 
             const redirects = document.querySelectorAll(".link")
@@ -81,6 +87,7 @@ if(verifyLocalFromPost.length > 0){
                     
                 category.addEventListener("click", event =>{
             
+                    checkScroll("selected")
                     let filterCategories = []
                     const list = newsLocalStorage()
     
@@ -102,14 +109,15 @@ if(verifyLocalFromPost.length > 0){
                 })
             })
         }, 1000);
-    }else{
 
+    }else{
 
     setAllNews(await getAllNews())
     renderCategories(await getAllCategories())
-    renderCardPost(await getAllNews())
+    checkScroll()
     
     setTimeout(() => {
+
         const redirects = document.querySelectorAll(".link")
         const btsCategory = document.querySelectorAll("#category")
     
@@ -132,6 +140,7 @@ if(verifyLocalFromPost.length > 0){
         
                 let filterCategories = []
                 const list = newsLocalStorage()
+
                 if(event.target.innerText == "Todos"){
 
                     renderCardPost()
@@ -139,6 +148,7 @@ if(verifyLocalFromPost.length > 0){
                 }else{
         
                     list.forEach((obj)=>{
+                        
                         if(obj.category == event.target.innerText){
         
                             filterCategories.push(obj)
@@ -151,3 +161,9 @@ if(verifyLocalFromPost.length > 0){
     }, 1000);
 }
 }
+
+setTimeout(()=>{
+    let div = document.querySelector("#observed")
+    div.classList.remove("hide")
+
+},2000)

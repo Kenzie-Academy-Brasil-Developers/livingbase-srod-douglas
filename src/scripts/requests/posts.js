@@ -1,7 +1,6 @@
 import url from "../path.js";
 import { storage } from '../localStorage.js'
 
-
 async function getPosts (page){
     
     const request = await fetch(`${url}?page=${page}`)
@@ -17,7 +16,6 @@ async function getPosts (page){
         console.error(err)
     }
 }
-
 
 async function dataPagePost () {
 
