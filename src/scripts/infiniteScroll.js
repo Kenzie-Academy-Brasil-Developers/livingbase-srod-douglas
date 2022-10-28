@@ -44,6 +44,10 @@ async function checkScroll (alert) {
 const observer = new IntersectionObserver((entries) => {
     if(entries.some(entry => entry.isIntersecting)){
         checkScroll()
+        const footer = document.querySelector("footer")
+        setTimeout(()=>{
+            footer.classList.remove("hide")
+        },2000)
     }
 })
 

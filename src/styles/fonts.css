@@ -35,3 +35,17 @@
 .phrase-home{
     margin-bottom: 1.5rem;
 }
+
+.title{
+    margin-bottom: 1rem;
+}
+
+.desc{
+    margin-bottom: 1rem;
+}
+
+.link{
+    position: absolute;
+    top: 100%;
+    cursor: pointer;
+}

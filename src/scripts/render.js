@@ -16,9 +16,9 @@ async function renderCardPost (){
             <img src="${post.image}" alt="${post.title}">
             <div class="infos">
                 <h2 class="title">${post.title}</h2>
-                <p class="desc">${post.description}</p>
+                <p class="desc c-g-2">${post.description}</p>
             </div>
-            <span class="${post.category} link" id="${post.id}" data-post="src/pages/post/index.html">Acessar conteúdo</span>
+            <span class="${post.category} link c-b-1" id="${post.id}" data-post="src/pages/post/index.html">Acessar conteúdo</span>
         </li>
         `)
     })
@@ -49,7 +49,7 @@ function renderCategories (categories){
         ul.insertAdjacentHTML("beforeend",
         `
         <li class="category">
-            <button id="category">${category}</button>
+            <button id="category" class="bt-grey f-4-s-b">${category}</button>
         </li>
         `)
     })
@@ -79,9 +79,9 @@ function renderSelectedCategory (posts){
             <img src="${info.image}" alt="${info.title}">
             <div class="info">
                 <h2 class="title">${info.title}</h2>
-                <p class="desc">${info.description}</p>
+                <p class="desc c-g-2">${info.description}</p>
             </div>
-            <span class="${info.category} link" id="${info.id}" data-post="src/pages/post/index.html">Acessar Conteúdo</span>
+            <span class="${info.category} link c-b-1" id="${info.id}" data-post="src/pages/post/index.html">Acessar Conteúdo</span>
         </li>
         `)
     })
@@ -140,9 +140,9 @@ async function renderScroll (page) {
             <img src="${post.image}" alt="${post.title}">
             <div class="infos">
                 <h2 class="title">${post.title}</h2>
-                <p class="desc">${post.description}</p>
+                <p class="desc c-g-2">${post.description}</p>
             </div>
-            <span class="${post.category} link" id="${post.id}" data-post="src/pages/post/index.html">Acessar conteúdo</span>
+            <span class="${post.category} link c-b-1" id="${post.id}" data-post="src/pages/post/index.html">Acessar conteúdo</span>
         </li>
         `)
     })
