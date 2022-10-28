@@ -1,1 +1,104 @@
-/* Desenvolva seu estilo aqui */
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 98vw;
+    height: 4rem;
+    margin: 0 auto;
+    padding: 4rem 13rem;
+    animation: ft 2s;
+    border-bottom: 1px solid var(--color-grey-600);
+    animation: ft 2s;
+}
+
+header > div{
+    display: flex;
+}
+
+.icon-brand{
+    margin-right: .5rem;
+}
+
+main{
+    width: 100%;
+    animation: ft 2s;
+}
+
+.post-sec-title-desc{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 21rem;
+    padding: 5rem 14rem;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    background-color: var(--color-grey-600);
+    animation: ft 2s;
+}
+
+.post-sec-img-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 14rem;
+    gap: 2rem;
+    margin-bottom: 4.5rem;
+}
+
+.post-div-img{
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    animation: ft 3s;
+}
+
+.post-div-img > img {
+    width: 100%;
+    object-fit: cover;
+}
+
+#categories{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6rem;
+    margin: 0 auto;
+    animation: ft 4s;
+}
+
+footer{
+    width: 100%;
+    height: 15.9rem;
+    padding: 5.6rem 22rem;
+    margin-top: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-grey-100);
+    animation: ft 4s;
+}
+  
+.div-brand-footer{
+    display: flex;
+}
+  
+.div-brand-footer > img {
+    margin-right: 1rem;
+}
+  
+.about{
+    width: 550px;
+    color: var(--color-grey-300);
+}
+  
+@keyframes ft {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
