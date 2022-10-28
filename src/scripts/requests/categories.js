@@ -1,7 +1,6 @@
 import { renderCategories } from '../render.js'
 import url from '../path.js'
 
-
 async function getCategories (count) {
 
     const request = await fetch(`${url}?page=${count}`)

@@ -1,5 +1,6 @@
 import { getPosts, dataPagePost } from './requests/posts.js'
 import { setAtLocal, insertInLocalStorage } from './localStorage.js'
+import { observer, checkScroll } from './infiniteScroll.js'
 
 async function renderCardPost (){
 
@@ -55,6 +56,13 @@ function renderCategories (categories){
 
     const categoriesNode = document.querySelectorAll("#category")
 
+    categoriesNode.forEach((bt)=>{
+
+        bt.onclick = () => {
+            checkScroll("selected")
+        }
+    })
+
     return categoriesNode
 }
 
@@ -91,6 +99,7 @@ function renderSelectedCategory (posts){
                 id: event.target.id,
                 category: `${category}`,
             }
+
             insertInLocalStorage(JSON.stringify(pref))
             window.location.replace(event.target.dataset.post)
         }
@@ -118,4 +127,43 @@ async function renderJustPost (){
     )
 }
 
-export { renderCardPost, renderCategories, renderSelectedCategory, renderJustPost }
+async function renderScroll (page) {
+
+    const posts = await getPosts(page)
+    const ul = document.querySelector("#posts")
+
+    posts.forEach((post)=>{
+
+        ul.insertAdjacentHTML("beforeend",
+        `
+        <li class="card">
+            <img src="${post.image}" alt="${post.title}">
+            <div class="infos">
+                <h2 class="title">${post.title}</h2>
+                <p class="desc">${post.description}</p>
+            </div>
+            <span class="${post.category} link" id="${post.id}" data-post="src/pages/post/index.html">Acessar conteúdo</span>
+        </li>
+        `)
+    })
+
+    const redirects = document.querySelectorAll(".link")
+
+    redirects.forEach((choice)=>{
+    
+        choice.onclick = (event) =>{
+            let category = event.target.classList[0].toLowerCase().replaceAll("ç", "c").replaceAll("ã", "a")
+
+            let pref = {
+                id: event.target.id,
+                category: `${category}`,
+            }
+            insertInLocalStorage(JSON.stringify(pref))
+            window.location.replace(event.target.dataset.post)
+        }
+    })
+    const observed = document.querySelector("#observed")
+    observer.observe(observed)
+}
+
+export { renderCardPost, renderCategories, renderSelectedCategory, renderJustPost, renderScroll }

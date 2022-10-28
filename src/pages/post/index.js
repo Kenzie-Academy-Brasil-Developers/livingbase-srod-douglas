@@ -3,7 +3,6 @@ import getAllCategories from '../../scripts/requests/allCategories.js'
 import { renderCategories } from '../../scripts/render.js'
 import { newsLocalStorage, storage } from '../../scripts/localStorage.js'
 
-
 renderCategories(await getAllCategories())
 
 renderJustPost()
@@ -31,7 +30,6 @@ btHome.onclick = (event) => {
 
         }
         localStorage.setItem("@preference at home", JSON.stringify(filtered))
-        localStorage.removeItem("@preferences at post")
         window.location.replace(linkHome)
     })
 }
