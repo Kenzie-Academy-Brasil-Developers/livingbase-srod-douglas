@@ -47,7 +47,7 @@ const observer = new IntersectionObserver((entries) => {
         const footer = document.querySelector("footer")
         setTimeout(()=>{
             footer.classList.remove("hide")
-        },2000)
+        },3000)
     }
 })
 
