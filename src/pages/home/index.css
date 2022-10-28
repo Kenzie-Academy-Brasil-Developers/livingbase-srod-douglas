@@ -1,0 +1,116 @@
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    margin: 2rem auto 0 auto;
+    animation: ft 2s;
+}
+
+main{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    animation: ft 2s;
+    scroll-margin-bottom: 30px;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+
+}
+
+.container{
+    width: 36rem;
+    height: 27.5rem;
+}
+
+.left{
+    width: 35%;
+    height: 27.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 12rem;
+}
+
+.brand{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4.31rem;
+}
+
+.right{
+    border-top-right-radius: 2.5rem;
+    border-bottom-left-radius: 2.5rem;
+}
+
+#categories{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+#posts{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100vw;
+}
+
+.card{
+    width: 36rem;
+    height: 22.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 6.5rem;
+    position: relative;
+    animation: ft 3s;
+}
+
+.card > img {
+    height: 172px;
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+}
+
+footer{
+    width: 100vw;
+    height: 15.9rem;
+    margin: 0;
+    padding: 5.6rem 22rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-grey-100);
+    animation: ft 2s;
+}
+
+.div-brand-footer{
+    display: flex;
+}
+
+.div-brand-footer > img {
+    margin-right: 1rem;
+}
+
+.about{
+    width: 550px;
+    color: var(--color-grey-300);
+}
+
+@keyframes ft {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

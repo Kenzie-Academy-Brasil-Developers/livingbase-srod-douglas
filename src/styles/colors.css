@@ -1,0 +1,27 @@
+.c-g-1{
+    color: var(--color-grey-100);
+}
+.c-g-2{
+    color: var(--color-grey-200);
+}
+.c-g-3{
+    color: var(--color-grey-300);
+}
+.c-g-4{
+    color: var(--color-grey-400);
+}
+.c-g-5{
+    color: var(--color-grey-500);
+}
+.c-g-6{
+    color: var(--color-grey-600);
+}
+.c-g-7{
+    color: var(--color-grey-700);
+}
+.c-b-1{
+    color: var(--color-brand-100);
+}
+.c-b-2{
+    color: var(--color-brand-200);
+}
