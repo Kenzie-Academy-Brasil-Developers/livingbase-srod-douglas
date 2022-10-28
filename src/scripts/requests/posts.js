@@ -3,6 +3,7 @@ import { storage } from '../localStorage.js'
 
 
 async function getPosts (page){
+    
     const request = await fetch(`${url}?page=${page}`)
 
     try{
@@ -25,13 +26,19 @@ async function dataPagePost () {
     const request = await fetch(`${url}/${idPost}`)
 
     try{
+
         const response = await request.json()
 
         if(request.ok){
+
             return response
+
         }
+
     }catch(err){
+
         console.error(err)
+
     }
 }
 
