@@ -1,10 +1,15 @@
 function checkLocal () {
-    const local = JSON.parse(localStorage.getItem("@preferences")) || ""
+    const local = JSON.parse(localStorage.getItem("@preference at home")) || ""
+    return local
+}
+
+function checkPreferencesFromPost () {
+    const local = JSON.parse(localStorage.getItem("@preferences at post")) || ""
     return local
 }
 
 function insertInLocalStorage (obj) {
-    localStorage.setItem("@preferences", obj)
+    localStorage.setItem("@preference at home", obj)
 }
 
 function setAtLocal (post) {
@@ -12,6 +17,7 @@ function setAtLocal (post) {
     post.forEach((infos)=>{
 
         infos.onclick = (event) =>{
+            
             let category = event.target.classList[0].toLowerCase().replaceAll("ç", "c").replaceAll("ã", "a")
             
             let pref = {
@@ -34,4 +40,4 @@ function newsLocalStorage () {
 
 const storage = checkLocal()
 
-export { storage, insertInLocalStorage, setAtLocal, setAllNews, newsLocalStorage }
+export { storage, insertInLocalStorage, setAtLocal, setAllNews, newsLocalStorage, checkPreferencesFromPost }
