@@ -113,15 +113,15 @@ async function renderJustPost (){
 
     main.insertAdjacentHTML("afterbegin",
         `
-        <section>
-            <h1>${post.title}</h1>
-            <p>${post.description}</p>
+        <section class="post-sec-title-desc">
+            <h1 class="post-title f-1-s-b">${post.title}</h1>
+            <p class="post-desc f-4-r g-2">${post.description}</p>
         </section>
-        <section>
-            <div>
+        <section class="post-sec-img-content">
+            <div class="post-div-img">
                 <img src="${post.image}" alt="${post.title}">
             </div>
-            <p>${post.content}</p>
+            <p class="post-content f-4-r g-2">${post.content}</p>
         </section>
         `
     )
